@@ -22,6 +22,8 @@ import Category from "./Category/index.astro"
 </article>
 
 <script>
+	import { DIAGNOSTICS_TOOL } from "../../constants.ts"
+
 	globalThis.addEventListener("DOMContentLoaded", () => {
 		const form = document.querySelector("#diagnostics-tool")
 
@@ -29,8 +31,46 @@ import Category from "./Category/index.astro"
 			event.preventDefault()
 
 			const formData = new FormData(form as HTMLFormElement)
+			const data: Array<object> = []
 
-			console.log("formData", formData)
+			for (const [key, value] of formData.entries()) {
+				const [_, c, q] = key.match(/^c([0-9]+)q([0-9]+)$/) ?? []
+				const cIndex = parseInt(c, 10)
+				const qIndex = parseInt(q, 10)
+				const category = DIAGNOSTICS_TOOL[cIndex]
+				const question = category?.questions[qIndex]
+				const score = parseInt(value as string, 10)
+
+				if (score > -1) {
+					if (! data[cIndex]) {
+						data[cIndex as number] ??= {}
+						data[cIndex].index = cIndex
+						data[cIndex].name = category?.category
+					}
+
+					if (data[cIndex] && ! data[cIndex].questions) {
+						data[cIndex].questions ??= []
+					}
+
+					if (data[cIndex].questions) {
+						data[cIndex].questions.push({
+							index: qIndex,
+							question,
+							score,
+						})
+					}
+				}
+			}
+
+			data.forEach(
+				(category) =>
+					(category.score = Math.round(
+						(category.questions.reduce((sum, q) => sum + q.score, 0) /
+							(category.questions.length || 1)) *
+						50))
+			)
+
+			console.log("formData", JSON.stringify(data, null, 2))
 		})
 	})
 </script>

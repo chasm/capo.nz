@@ -1,6 +1,6 @@
 footer {
 	background-color: #66c3ff;
-	color: hsl(0, 0%, 0%);
+	color: hsl(0deg, 0%, 0%);
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	font-family: var(--font-body);
@@ -29,16 +29,14 @@ nav > ul {
 	padding: 0;
 }
 
-footer > .copyright a,
 nav a,
 nav li {
-	color: hsl(0, 0%, 0%);
+	color: hsl(0deg, 0%, 0%);
 	letter-spacing: 0.5px;
 	text-transform: lowercase;
 	white-space: nowrap;
 }
 
-footer > .copyright a,
 nav a {
 	border-radius: 1px;
 	outline: 2px solid transparent;
@@ -46,10 +44,21 @@ nav a {
 	text-decoration: none;
 }
 
-footer > .copyright a:focus,
-footer > .copyright a:hover,
+footer > .copyright a {
+	border-radius: 1px;
+	color: hsl(0deg, 0%, 0%);
+	letter-spacing: 0.5px;
+	outline-offset: 3px;
+	outline: 2px solid transparent;
+	text-decoration: none;
+	text-transform: lowercase;
+	white-space: nowrap;
+}
+
 nav a:focus,
-nav a:hover {
+nav a:hover,
+footer > .copyright a:focus,
+footer > .copyright a:hover {
 	outline: 2px solid var(--body-color);
 }
 
@@ -65,7 +74,7 @@ nav li:not(:first-child)::before {
 	padding: 0 0.2rem 0 0.5rem;
 }
 
-@media screen and (max-width: 60rem) {
+@media screen and (width <= 60rem) {
 	footer {
 		grid-template-columns: 1fr;
 		grid-template-rows: min-content 1fr;

@@ -15,6 +15,14 @@ const { category, index, questions = [] } = Astro.props
 <section>
 	<h2>{category}</h2>
 	<ul class="questions">
-		{questions.map((question, no) => <Question {index} {no} {question} />)}
+		{
+			questions.map((question, no) => (
+				<Question
+					{index}
+					{no}
+					{question}
+				/>
+			))
+		}
 	</ul>
 </section>
