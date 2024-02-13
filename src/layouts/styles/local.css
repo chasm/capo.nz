@@ -1,0 +1,99 @@
+:root {
+	--body-background-color: hsl(0, 0%, 100%);
+	--body-color: #005994;
+	--heading-color: #005994;
+	/* Fonts */
+	--font-body: Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans",
+		Arial, sans-serif;
+
+	/* Spacing */
+	--space-3xs: clamp(0.25rem, 0.2356rem + 0.0769vi, 0.3125rem);
+	--space-2xs: clamp(0.5rem, 0.4712rem + 0.1538vi, 0.625rem);
+	--space-xs: clamp(0.75rem, 0.7067rem + 0.2308vi, 0.9375rem);
+	--space-s: clamp(1rem, 0.9423rem + 0.3077vi, 1.25rem);
+	--space-m: clamp(1.5rem, 1.4135rem + 0.4615vi, 1.875rem);
+	--space-l: clamp(2rem, 1.8846rem + 0.6154vi, 2.5rem);
+	--space-xl: clamp(3rem, 2.8269rem + 0.9231vi, 3.75rem);
+	--space-2xl: clamp(4rem, 3.7692rem + 1.2308vi, 5rem);
+	--space-3xl: clamp(6rem, 5.6538rem + 1.8462vi, 7.5rem);
+	/* Font sizes */
+	--step-0: clamp(1rem, 0.9135rem + 0.4615vi, 1.375rem);
+	--step-1: clamp(1.25rem, 1.1418rem + 0.5769vi, 1.7188rem);
+	--step-2: clamp(1.5625rem, 1.4273rem + 0.7212vi, 2.1484rem);
+	--step-3: clamp(1.9531rem, 1.7841rem + 0.9014vi, 2.6855rem);
+	--step-4: clamp(2.4414rem, 2.2301rem + 1.1268vi, 3.3569rem);
+	--step-5: clamp(3.0518rem, 2.7877rem + 1.4085vi, 4.1962rem);
+}
+
+body {
+	align-items: stretch;
+	background-color: var(--body-background-color);
+	color: var(--body-color);
+	display: flex;
+	flex-direction: column;
+	font-family: var(--font-body);
+	font-size: var(--step-0, 1rem);
+	gap: 0;
+	justify-content: space-between;
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+}
+
+main {
+	align-items: flex-start;
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	justify-content: flex-start;
+	height: auto;
+	padding: var(--space-xl);
+}
+
+blockquote {
+	background-color: #f6a694;
+	margin: 0;
+	margin-top: var(--space-m);
+	padding: var(--space-s) var(--space-m);
+}
+
+blockquote p {
+	margin: var(--space-m) 0 0;
+}
+
+blockquote p:first-child {
+	margin: 0;
+}
+
+figure {
+	margin-inline: 0;
+}
+
+figcaption {
+	text-align: center;
+	width: 100%;
+}
+
+h1,
+h2 {
+	color: var(--heading-color);
+	font-family: var(--font-body);
+	font-weight: 400;
+}
+
+h1 {
+	font-size: var(--step-3);
+}
+
+h2 {
+	background-color: var(--heading-color);
+	color: white;
+	font-size: var(--step-2);
+	padding: 0.5rem;
+}
+
+article {
+	font-family: var(--font-body);
+	font-size: var(--step-0);
+	width: min(54rem, calc(100vw - calc(var(--space-xl) * 2)));
+}

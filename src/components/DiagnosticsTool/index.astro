@@ -1,0 +1,36 @@
+---
+import "./index.css"
+
+import { DIAGNOSTICS_TOOL } from "~constants"
+import Category from "./Category/index.astro"
+---
+
+<article>
+	<h1>Business Diagnostics Tool</h1>
+	<form id="diagnostics-tool">
+		{
+			DIAGNOSTICS_TOOL.map(({ category, questions }, index) => (
+				<Category
+					{category}
+					{questions}
+					{index}
+				/>
+			))
+		}
+		<button type="submit">Get your results</button>
+	</form>
+</article>
+
+<script>
+	globalThis.addEventListener("DOMContentLoaded", () => {
+		const form = document.querySelector("#diagnostics-tool")
+
+		form?.addEventListener("submit", (event) => {
+			event.preventDefault()
+
+			const formData = new FormData(form as HTMLFormElement)
+
+			console.log("formData", formData)
+		})
+	})
+</script>

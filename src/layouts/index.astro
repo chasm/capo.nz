@@ -1,0 +1,42 @@
+---
+import "./styles/global.css"
+import "./styles/local.css"
+
+import Footer from "~components/Footer/index.astro"
+import Head from "~components/Head/index.astro"
+import Header from "~components/Header/index.astro"
+import Html from "~components/Html/index.astro"
+
+export type Props = {
+	author?: string | undefined
+	description?: string | undefined
+	keywords?: Array<string> | undefined
+	publisher?: string | undefined
+	title?: string | undefined
+}
+
+const { author, description, keywords, publisher, title } = Astro.props
+
+const content = await Astro.slots.render("default")
+---
+
+<Html>
+	<Head
+		{author}
+		{description}
+		{keywords}
+		{publisher}
+		{title}
+	>
+		<slot name="head" />
+	</Head>
+
+	<body>
+		<Header />
+		<main>
+			<Fragment set:html={content} />
+		</main>
+		<Footer />
+		<slot name="tail" />
+	</body>
+</Html>

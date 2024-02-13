@@ -1,0 +1,9 @@
+section {
+	margin-block: 4rem;
+}
+
+ul.questions {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}

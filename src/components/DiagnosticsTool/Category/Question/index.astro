@@ -1,0 +1,27 @@
+---
+import "./index.css"
+
+export type Props = {
+	index: number
+	no: number
+	question: string
+}
+
+const { index, no, question } = Astro.props
+---
+
+<li class="question">
+	<span>{question}</span>
+	<label>N/A
+		<input checked name={`c${index}q${no}`} type="radio" value="-1" />
+	</label>
+	<label>YES
+		<input name={`c${index}q${no}`} type="radio" value="2" />
+	</label>
+	<label>SOMEWHAT
+		<input name={`c${index}q${no}`} type="radio" value="1" />
+	</label>
+	<label>NO
+		<input name={`c${index}q${no}`} type="radio" value="0" />
+	</label>
+</li>

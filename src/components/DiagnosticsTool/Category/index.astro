@@ -1,0 +1,20 @@
+---
+import "./index.css"
+
+import Question from "./Question/index.astro"
+
+export type Props = {
+	category: string
+	index: number
+	questions: Array<string>
+}
+
+const { category, index, questions = [] } = Astro.props
+---
+
+<section>
+	<h2>{category}</h2>
+	<ul class="questions">
+		{questions.map((question, no) => <Question {index} {no} {question} />)}
+	</ul>
+</section>
