@@ -1,11 +1,15 @@
 body > header {
-	align-items: center;
 	background-color: var(--header-background-color, #005994);
 	color: var(--header-foreground-color, hsl(0deg, 0%, 100%));
-	display: flex;
+	display: grid;
 	font-family: var(--font-body);
-	gap: 1rem;
-	justify-content: space-between;
+	grid-column: viewport-start / viewport-end;
+	grid-row: header-top / header-bottom;
+	grid-template-columns:
+		[viewport-start] var(--gutter-width, 4vw)
+		[header-start] auto
+		[header-end] var(--gutter-width, 4vw)
+		[viewport-end];
 	max-height: fit-content;
-	padding: var(--space-xs) var(--space-xl);
+	padding: var(--space-xs) 0;
 }

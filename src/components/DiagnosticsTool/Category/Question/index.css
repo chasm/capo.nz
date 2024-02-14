@@ -2,14 +2,19 @@ li.question {
 	border-bottom: 1px solid hsl(204deg, 100%, 85%);
 	display: grid;
 	gap: 0.2rem;
+	grid-template-areas: "question na yes somewhat no";
 	grid-template-columns: auto min-content min-content min-content min-content;
-	grid-template-rows: 1fr;
 	margin-block: 0.5rem;
 	padding-block: 0.5rem;
 }
 
+li.question:last-child {
+	border-bottom: none;
+}
+
 li.question span {
 	display: inline-block;
+	grid-area: question;
 	padding-right: 2rem;
 }
 
@@ -30,15 +35,36 @@ li.question label {
 	position: relative;
 }
 
+li.question label:nth-child(2) {
+	grid-area: na;
+}
+
+li.question label:nth-child(3) {
+	grid-area: yes;
+}
+
+li.question label:nth-child(4) {
+	grid-area: somewhat;
+}
+
+li.question label:last-child {
+	grid-area: no;
+}
+
 li.question label:has(:checked) {
 	background-color: hsl(204deg, 100%, 29%);
 	border-color: hsl(204deg, 100%, 19%);
 	color: hsl(0deg, 0%, 100%);
 }
 
+li.question label:has(input[value="-1"]:checked) {
+	background-color: hsl(204, 10%, 34%);
+	border-color: hsl(204, 10%, 14%);
+}
+
 li.question label:hover,
 li.question label:has(input:focus) {
-	outline: 2px solid hsl(204deg, 100%, 49%);
+	outline: 3px solid hsl(204deg, 100%, 49%);
 	outline-offset: 3px;
 }
 
@@ -47,4 +73,22 @@ li.question input[type="radio"] {
 	max-height: 1px;
 	max-width: 1px;
 	position: absolute;
+}
+
+.landscape-prompt {
+	display: none;
+}
+
+@media only screen and (max-width: 720px) {
+	li.question {
+		grid-template-areas:
+			"question question question question question"
+			"na yes somewhat no blank";
+		grid-template-columns: min-content min-content min-content min-content auto;
+		row-gap: 0.5rem;
+	}
+
+	.landscape-prompt {
+		display: block;
+	}
 }

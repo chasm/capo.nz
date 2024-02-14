@@ -7,6 +7,10 @@ import Category from "./Category/index.astro"
 
 <article>
 	<h1>Business Diagnostics Tool</h1>
+	<p class="landscape-prompt">
+		<img alt="" height="24" src="/images/landscape-mode.svg" style="float: left; margin: 0.5rem 0.5rem 0.5rem 0;" />
+		For ease of use, please turn your phone a quarter turn to landscape orientation.
+	</p>
 	<form id="diagnostics-tool">
 		{
 			DIAGNOSTICS_TOOL.map(({ category, questions }, index) => (

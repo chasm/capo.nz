@@ -1,5 +1,5 @@
 section {
-	margin-block: 4rem;
+	margin-block: var(--section-spacing, 4rem);
 }
 
 ul.questions {
