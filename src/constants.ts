@@ -118,11 +118,11 @@ export const GLOBAL_NAV = [{ href: "/tool", label: "Tool" }]
 export const SITE_AUTHOR = "Vito Lo Iacono"
 export const SITE_CANONICAL_URL = "https://capo.nz"
 export const SITE_DESCRIPTION = collapseWhitespace(`
-	Our business diagnostic tool helps you to understand where you are and where you need to go.
+	Our business diagnostic tool helps you to understand where you are and where you need to go. Try it for free and see your results instantly.
 `)
-export const SITE_KEYWORDS = ["business", "diagnostics", "tool"]
+export const SITE_KEYWORDS = ["business", "diagnostics", "tool", "capo", "capo strategies"]
 export const SITE_PUBLISHER = "Vito Lo Iacono"
-export const SITE_TITLE = "capo."
+export const SITE_TITLE = "capo. business diagnostics tool."
 
 export const SUPPLEMENTAL_NAV = [
 	// { href: "/feedback", label: "Feedback" },
