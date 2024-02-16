@@ -166,6 +166,14 @@ export default function addStylesheet() {
 				grid-row: heading-top / heading-bottom;
 			}
 
+			.spreadsheet {
+				align-items: center;
+				display: flex;
+				gap: 0.5rem;
+				justify-content: flex-start;
+				padding: 1rem 0;
+			}
+
 			main section.scores {
 				grid-column: content-start / content-end;
 				grid-row: scores-top / scores-bottom;
