@@ -42,7 +42,7 @@ body {
 		[viewport-end];
 	grid-template-rows:
 		[viewport-top header-top] min-content
-		[header-bottom main-top] auto
+		[header-bottom main-top] 1fr
 		[main-bottom footer-top] min-content
 		[footer-bottom viewport-bottom];
 	margin: 0;

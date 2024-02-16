@@ -77,7 +77,7 @@ footer > .copyright a:hover {
 
 nav li > span {
 	background-color: var(--body-color);
-	color: var(--heading-color);
+	color: var(--body-background-color);
 	padding: 0.25rem 0.5rem;
 }
 

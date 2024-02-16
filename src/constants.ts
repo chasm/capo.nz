@@ -125,7 +125,7 @@ export const SITE_PUBLISHER = "Vito Lo Iacono"
 export const SITE_TITLE = "capo."
 
 export const SUPPLEMENTAL_NAV = [
-	{ href: "/feedback", label: "Feedback" },
+	// { href: "/feedback", label: "Feedback" },
 	{ href: "/cookie-policy", label: "Cookie policy" },
 	{ href: "/privacy-policy", label: "Privacy policy" },
 	{ href: "/terms-of-use", label: "Terms of use" },
