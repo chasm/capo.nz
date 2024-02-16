@@ -57,15 +57,15 @@ li.question label:has(:checked) {
 	color: hsl(0deg, 0%, 100%);
 }
 
-li.question label:has(input[value="-1"]:checked) {
-	background-color: hsl(204, 10%, 34%);
-	border-color: hsl(204, 10%, 14%);
-}
-
 li.question label:hover,
 li.question label:has(input:focus) {
 	outline: 3px solid hsl(204deg, 100%, 49%);
 	outline-offset: 3px;
+}
+
+li.question label:has(input[value="-1"]:checked) {
+	background-color: hsl(204deg, 10%, 34%);
+	border-color: hsl(204deg, 10%, 14%);
 }
 
 li.question input[type="radio"] {
@@ -79,7 +79,7 @@ li.question input[type="radio"] {
 	display: none;
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (width <= 720px) {
 	li.question {
 		grid-template-areas:
 			"question question question question question"

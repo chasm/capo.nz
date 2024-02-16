@@ -3,15 +3,25 @@ import "./index.css"
 
 import { DIAGNOSTICS_TOOL } from "~constants"
 import Category from "./Category/index.astro"
+import Honeypot from "~components/Honeypot/index.astro"
 ---
 
 <article>
 	<h1>Business Diagnostics Tool</h1>
 	<p class="landscape-prompt">
-		<img alt="" height="24" src="/images/landscape-mode.svg" style="float: left; margin: 0.5rem 0.5rem 0.5rem 0;" />
+		<img
+			alt=""
+			height="24"
+			src="/images/landscape-mode.svg"
+			style="float: left; margin: 0.5rem 0.5rem 0.5rem 0;"
+		/>
 		For ease of use, please turn your phone a quarter turn to landscape orientation.
 	</p>
-	<form id="diagnostics-tool">
+	<form
+		action="/api/results"
+		id="diagnostics-tool"
+		method="POST"
+	>
 		{
 			DIAGNOSTICS_TOOL.map(({ category, questions }, index) => (
 				<Category
@@ -22,59 +32,6 @@ import Category from "./Category/index.astro"
 			))
 		}
 		<button type="submit">Get your results</button>
+		<Honeypot password="shizmo666" />
 	</form>
 </article>
-
-<script>
-	import { DIAGNOSTICS_TOOL } from "../../constants.ts"
-
-	globalThis.addEventListener("DOMContentLoaded", () => {
-		const form = document.querySelector("#diagnostics-tool")
-
-		form?.addEventListener("submit", (event) => {
-			event.preventDefault()
-
-			const formData = new FormData(form as HTMLFormElement)
-			const data: Array<object> = []
-
-			for (const [key, value] of formData.entries()) {
-				const [_, c, q] = key.match(/^c([0-9]+)q([0-9]+)$/) ?? []
-				const cIndex = parseInt(c, 10)
-				const qIndex = parseInt(q, 10)
-				const category = DIAGNOSTICS_TOOL[cIndex]
-				const question = category?.questions[qIndex]
-				const score = parseInt(value as string, 10)
-
-				if (score > -1) {
-					if (! data[cIndex]) {
-						data[cIndex as number] ??= {}
-						data[cIndex].index = cIndex
-						data[cIndex].name = category?.category
-					}
-
-					if (data[cIndex] && ! data[cIndex].questions) {
-						data[cIndex].questions ??= []
-					}
-
-					if (data[cIndex].questions) {
-						data[cIndex].questions.push({
-							index: qIndex,
-							question,
-							score,
-						})
-					}
-				}
-			}
-
-			data.forEach(
-				(category) =>
-					(category.score = Math.round(
-						(category.questions.reduce((sum, q) => sum + q.score, 0) /
-							(category.questions.length || 1)) *
-						50))
-			)
-
-			console.log("formData", JSON.stringify(data, null, 2))
-		})
-	})
-</script>

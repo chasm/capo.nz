@@ -17,7 +17,6 @@
 	--space-xl: clamp(3rem, 2.8269rem + 0.9231vi, 3.75rem);
 	--space-2xl: clamp(4rem, 3.7692rem + 1.2308vi, 5rem);
 	--space-3xl: clamp(6rem, 5.6538rem + 1.8462vi, 7.5rem);
-
 	--gutter-width: 4vw;
 	--page-width: 92vw;
 	--section-spacing: 4rem;
@@ -123,7 +122,7 @@ article {
 	grid-row: content-top / content-bottom;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (width <= 900px) {
 	:root {
 		--gutter-width: 3vw;
 		--page-width: 94vw;

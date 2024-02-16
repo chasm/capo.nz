@@ -1,7 +1,6 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"compilerOptions": {
-		"allowImportingTsExtensions": true,
 		"allowJs": false,
 		"allowUnreachableCode": false,
 		"allowUnusedLabels": false,
@@ -23,7 +22,7 @@
 			"~components/*": ["src/components/*"],
 			"~constants": ["src/constants"],
 			"~layouts/*": ["src/layouts/*"],
-			"~types": ["src/types"],
+			"~types": ["src/types/*"],
 			"~utilities/*": ["src/utilities/*"]
 		},
 		"resolveJsonModule": true,
