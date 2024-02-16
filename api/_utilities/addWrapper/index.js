@@ -35,6 +35,7 @@ export default function addWrapper(body) {
 			<header>
 				<h1>Diagnostic Results</h1>
 				<p>Use print and &ldquo;Save as PDF&rdquo; to save as a PDF file.</p>
+				<p>Use the browser back button to return to your form.</p>
 			</header>
 			${addScores(scores)}
 			${addRadarChart(points, scores)}
