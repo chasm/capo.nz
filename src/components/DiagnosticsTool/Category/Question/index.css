@@ -1,5 +1,5 @@
 li.question {
-	border-bottom: 1px solid hsl(204deg, 100%, 85%);
+	border-bottom: 1px solid var(--question-border-bottom-color);
 	display: grid;
 	gap: 0.2rem;
 	grid-template-areas: "question na yes somewhat no";
@@ -20,8 +20,8 @@ li.question span {
 
 li.question label {
 	align-items: center;
-	background-color: hsl(0deg, 0%, 90%);
-	border: 1px solid hsl(0deg, 0%, 80%);
+	background-color: #e6e6e6;
+	border: 1px solid #ccc;
 	border-radius: 5px;
 	color: hsl(0deg, 0%, 0%);
 	display: flex;
@@ -52,20 +52,21 @@ li.question label:last-child {
 }
 
 li.question label:has(:checked) {
-	background-color: hsl(204deg, 100%, 29%);
-	border-color: hsl(204deg, 100%, 19%);
-	color: hsl(0deg, 0%, 100%);
+	background-color: var(--question-button-background-color-checked);
+	border-color: var(--question-button-border-color-checked);
+	color: var(--question-button-foreground-color-checked);
 }
 
 li.question label:hover,
 li.question label:has(input:focus) {
-	outline: 3px solid hsl(204deg, 100%, 49%);
-	outline-offset: 3px;
+	outline: 3px solid var(--question-button-outline-color);
+	outline-offset: 4px;
 }
 
-li.question label:has(input[value="-1"]:checked) {
-	background-color: hsl(204deg, 10%, 34%);
-	border-color: hsl(204deg, 10%, 14%);
+li.question label:has(input[value=""]:checked) {
+	background-color: var(--na-button-background-color-checked);
+	border-color: var(--na-button-border-color-checked);
+	color: var(--na-button-foreground-color-checked);
 }
 
 li.question input[type="radio"] {

@@ -1,7 +1,27 @@
 :root {
-	--body-background-color: hsl(0deg, 0%, 100%);
+	--body-background-color: #fff;
 	--body-color: #005994;
+	--h2-background-color: #005994;
+	--h2-foreground-color: #fff;
 	--heading-color: #005994;
+	--header-background-color: #005994;
+	--header-foreground-color: #fff;
+	--logo-foreground-color: #fff;
+	--na-button-background-color-checked: #4e585f;
+	--na-button-border-color-checked: #202427;
+	--na-button-foreground-color-checked: #fff;
+	--question-border-bottom-color: #b3e0ff;
+	--question-button-background-color-checked: #005994;
+	--question-button-border-color-checked: #003a61;
+	--question-button-foreground-color-checked: #fff;
+	--question-button-outline-color: #0096fa;
+	--submit-button-background-color: #0b6544;
+	--submit-button-border-color: #063725;
+	--submit-button-foreground-color: #fff;
+	--submit-button-outline-color: #15c182;
+	--submit-button-background-color-hover: #fff;
+	--submit-button-border-color-hover: #15c182;
+	--submit-button-foreground-color-hover: #063725;
 
 	/* Fonts */
 	--font-body: inter, roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans",
@@ -28,6 +48,34 @@
 	--step-3: clamp(1.728rem, 1.6034rem + 0.6646vi, 2.268rem);
 	--step-4: clamp(2.0736rem, 1.9241rem + 0.7975vi, 2.7216rem);
 	--step-5: clamp(2.4883rem, 2.3089rem + 0.957vi, 3.2659rem);
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+	:root {
+		--body-background-color: #005994;
+		--body-color: #fff;
+		--h2-background-color: #fff;
+		--h2-foreground-color: #005994;
+		--heading-color: #9ed9ff;
+		--header-background-color: #9ed9ff;
+		--header-foreground-color: #00406b;
+		--logo-foreground-color: #00406b;
+		--na-button-background-color-checked: #4e585f;
+		--na-button-border-color-checked: #fff;
+		--na-button-foreground-color-checked: #fff;
+		--question-border-bottom-color: #fff6;
+		--question-button-background-color-checked: #005994;
+		--question-button-border-color-checked: #fff;
+		--question-button-foreground-color-checked: #fff;
+		--question-button-outline-color: #ff9;
+		--submit-button-background-color: #17d892;
+		--submit-button-border-color: #063725;
+		--submit-button-foreground-color: #063725;
+		--submit-button-outline-color: #fff;
+		--submit-button-background-color-hover: #fff;
+		--submit-button-border-color-hover: #063725;
+		--submit-button-foreground-color-hover: #063725;
+	}
 }
 
 body {
@@ -109,8 +157,8 @@ h1 {
 }
 
 h2 {
-	background-color: var(--heading-color);
-	color: white;
+	background-color: var(--h2-background-color);
+	color: var(--h2-foreground-color);
 	font-size: var(--step-2);
 	padding: 0.5rem;
 }

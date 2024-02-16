@@ -1,6 +1,6 @@
 body > header {
 	background-color: var(--header-background-color, #005994);
-	color: var(--header-foreground-color, hsl(0deg, 0%, 100%));
+	color: var(--header-foreground-color, #fff);
 	display: grid;
 	font-family: var(--font-body);
 	grid-column: viewport-start / viewport-end;
