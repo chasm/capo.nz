@@ -9,8 +9,6 @@ export default async function handler(
 	const data = request?.body
 	const spreadsheet = makeTsv(data)
 
-	console.log("data", JSON.stringify(data, null, 2))
-
 	if (spreadsheet) {
 		response
 			.status(200)

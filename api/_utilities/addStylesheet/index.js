@@ -88,6 +88,10 @@ export default function addStylesheet() {
 				display: none !important;
 			}
 
+			.landscape-prompt {
+				display: none;
+			}
+
 			:root {
 				--body-background-color: hsl(0deg, 0%, 100%);
 				--body-color: #005994;
@@ -169,9 +173,14 @@ export default function addStylesheet() {
 			.spreadsheet {
 				align-items: center;
 				display: flex;
+				flex-wrap: wrap;
 				gap: 0.5rem;
 				justify-content: flex-start;
 				padding: 1rem 0;
+			}
+
+			.spreadsheet button {
+				white-space: nowrap;
 			}
 
 			main section.scores {
@@ -180,7 +189,7 @@ export default function addStylesheet() {
 			}
 
 			table {
-				width: 28rem;
+				width: min(94vw, 28rem);
 			}
 
 			thead {
@@ -212,7 +221,7 @@ export default function addStylesheet() {
 			}
 
 			caption {
-				font-size: 1.6rem;
+				font-size: var(--step-2);
 				font-weight: 400;
 				padding: 3rem 0 0.5rem;
 				text-align: left;
@@ -236,7 +245,7 @@ export default function addStylesheet() {
 			}
 
 			.responses table {
-				width: min(90vw, 60rem);
+				width: min(94vw, 60rem);
 			}
 
 			.responses tbody tr td:first-child {
@@ -255,8 +264,12 @@ export default function addStylesheet() {
 			}
 
 			h2 {
-				font-size: var(--step-2);
-				padding: 2rem 0 1rem;
+				font-size: var(--step-3);
+				padding: 2rem 0 0;
+			}
+
+			.scores h2 {
+				margin-bottom: -2rem;
 			}
 
 			@media only screen and (max-width: 900px) {
@@ -264,6 +277,12 @@ export default function addStylesheet() {
 					--gutter-width: 3vw;
 					--page-width: 94vw;
 					--section-spacing: 1rem;
+				}
+			}
+
+			@media only screen and (width <= 720px) {
+				.landscape-prompt {
+					display: block;
 				}
 			}
 
@@ -357,9 +376,15 @@ export default function addStylesheet() {
 			}
 
 			@media screen and (width <= 720px) {
-				footer {
+				footer {				background-color: #66c3ff;
+					color: hsl(0deg, 0%, 0%);
+					display: grid;
+					grid-column: viewport-start / viewport-end;
+					grid-row: footer-top / footer-bottom;
 					grid-template-columns: 1fr;
 					grid-template-rows: min-content 1fr;
+					font-family: var(--font-body);
+					max-height: fit-content;
 					padding: var(--space-m) var(--space-xl);
 					row-gap: var(--space-l);
 				}
