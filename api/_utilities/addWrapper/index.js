@@ -34,29 +34,34 @@ export default function addWrapper(body) {
 		<main>
 			<header>
 				<h1>Diagnostic Results</h1>
-				<p class="landscape-prompt">
-					<img
-						alt=""
-						height="24"
-						src="/images/landscape-mode.svg"
-						style="float: left; margin: 0.5rem 0.5rem 0.5rem 0;"
-					/>
-					For ease of use, please turn your phone a quarter turn to landscape orientation.
-				</p>
-				<p>Use <button onclick="window.print(); return false;">print</button> and &ldquo;Save as PDF&rdquo; to save as a PDF file.</p>
-				<p>Use the browser <button onclick="window.history.back(); return false;">back</button> button to return to your form.</p>
-				<div class="spreadsheet">
-					Download your
-					<form action="/api/business-diagnostics" method="POST">
-						${Object.entries(body)
-							.map(
-								([name, value]) =>
-									`<input type="hidden" name="${name}" value="${value}">`,
-							)
-							.join("\n						")}
-						<button type="submit">scores as a spreadsheet</button>
-					</form> in tab-separated-value (TSV) format.
+				<div class="no-print">
+					<p class="landscape-prompt">
+						<img
+							alt=""
+							height="24"
+							src="/images/landscape-mode.svg"
+							style="float: left; margin: 0.5rem 0.5rem 0.5rem 0;"
+						/>
+						For ease of use, please turn your phone a quarter turn to landscape orientation.
+					</p>
+					<p>Use <button onclick="window.print(); return false;">print</button> and &ldquo;Save as PDF&rdquo; to save as a PDF file.</p>
+					<p>Use the browser <button onclick="window.history.back(); return false;">back</button> button to return to your form.</p>
+					<div class="spreadsheet">
+						Download your
+						<form action="/api/business-diagnostics" method="POST">
+							${Object.entries(body)
+								.map(
+									([name, value]) =>
+										`<input type="hidden" name="${name}" value="${value}">`,
+								)
+								.join("\n						")}
+							<button type="submit">scores as a spreadsheet</button>
+						</form> in tab-separated-value (TSV) format.
+					</div>
 				</div>
+				<p class="print-only">
+					Printed from <strong>capo.nz</strong>.
+				</p>
 			</header>
 			${addScores(scores)}
 			${addRadarChart(points, scores)}

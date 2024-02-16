@@ -375,6 +375,10 @@ export default function addStylesheet() {
 				padding: 0 0.2rem 0 0.5rem;
 			}
 
+			.print-only {
+				display: none;
+			}
+
 			@media screen and (width <= 720px) {
 				footer {				background-color: #66c3ff;
 					color: hsl(0deg, 0%, 0%);
@@ -442,6 +446,18 @@ export default function addStylesheet() {
 			.logo a:focus,
 			.logo a:hover {
 				outline: 2px solid var(--body-background-color);
+			}
+
+			@media only print {
+				body > header,
+				body > footer,
+				.no-print {
+					display: none;
+				}
+
+				.print-only {
+					display: block;
+				}
 			}
 		</style>
 	`
