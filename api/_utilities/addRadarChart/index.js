@@ -3,7 +3,7 @@ export default function addRadarChart(points = [], scores = []) {
 			<section class="chart">
 				<h2>Radar chart</h2>
 				<svg
-				class="radar-chart"
+					class="radar-chart"
 					height="900"
 					version="1.1"
 					viewBox="0 0 1200 1200"
@@ -11,7 +11,13 @@ export default function addRadarChart(points = [], scores = []) {
 					xml:space="preserve"
 					xmlns="http://www.w3.org/2000/svg"
 				>
-
+					<rect
+						fill="#ffffff"
+						height="1200"
+						width="1200"
+						x="0"
+						y="0"
+					/>
 					<!-- spokes -->
 					<g
 						stroke="#ccc"
@@ -439,9 +445,10 @@ export default function addRadarChart(points = [], scores = []) {
 						stroke-width="5"
 						stroke-linejoin="round"
 					>
-						${points.map(([x, y], index) => {
-							if (index < 1) {
-								return `
+						${points
+							.map(([x, y], index) => {
+								if (index < 1) {
+									return `
 										<line
 											x1="${points.at(-1)[0]}"
 											x2="${x}"
@@ -449,9 +456,9 @@ export default function addRadarChart(points = [], scores = []) {
 											y2="${y}"
 										/>
 									`
-							}
+								}
 
-							return `
+								return `
 									<line
 										x1="${points[index - 1][0]}"
 										x2="${x}"
@@ -459,13 +466,15 @@ export default function addRadarChart(points = [], scores = []) {
 										y2="${y}"
 									/>
 								`
-						})}
+							})
+							.join("\n")}
 					</g>
 					<!-- points -->
 					<g fill="#ab2121">
-					${points.map(
-						([x = 0, y = 0], index) =>
-							`
+					${points
+						.map(
+							([x = 0, y = 0], index) =>
+								`
 								<circle
 									cx="${x}"
 									cy="${y}"
@@ -479,7 +488,9 @@ export default function addRadarChart(points = [], scores = []) {
 									y="${y + 20}"
 								>${scores[index].score}</text>
 							`,
-					)}
+						)
+						.join("\n")}
+					</g>
 				</svg>
 			</section>
 	`

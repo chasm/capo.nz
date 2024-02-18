@@ -5,10 +5,54 @@ import addStylesheet from "../addStylesheet/index.js"
 import getPoints from "../getPoints/index.js"
 import getScores from "../getScores/index.js"
 
-export default function addWrapper(body) {
+export default function addWrapper(body, message = "", addChrome = true) {
 	const scores = getScores(body)
 	const points = getPoints(scores)
 	const stylesheet = addStylesheet()
+
+	const chrome = `<div class="no-print">
+	<p class="landscape-prompt">
+		<img
+			alt=""
+			height="24"
+			src="/images/landscape-mode.svg"
+			style="float: left; margin: 0.5rem 0.5rem 0.5rem 0;"
+		/>
+		For ease of use, please turn your phone a quarter turn to landscape orientation.
+	</p>
+	<p>Use <button onclick="window.print(); return false;">print</button> and &ldquo;Save as PDF&rdquo; to save as a PDF file.</p>
+	<p>Use the browser <button onclick="window.history.back(); return false;">back</button> button to return to your form.</p>
+	<div class="has-form">
+		Download your
+		<form action="/api/business-diagnostics" method="POST">
+			${Object.entries(body)
+				.map(
+					([name, value]) =>
+						`<input type="hidden" name="${name}" value="${value}">`,
+				)
+				.join("\n						")}
+			<button type="submit">scores as a spreadsheet</button>
+		</form> in tab-separated-value (TSV) format.
+	</div>
+	<div class="has-form">
+		To get a copy of your results, provide your email address:
+		<form action="/api/response" method="POST">
+			<label>
+				<input type="email" name="email" required />
+			</label>
+			${Object.entries(body)
+				.map(
+					([name, value]) =>
+						`<input type="hidden" name="${name}" value="${value}">`,
+				)
+				.join("\n						")}
+			<button type="submit">Send</button>
+		</form>
+	</div>
+</div>
+<p class="print-only">
+	Printed from <strong>capo.nz</strong>.
+</p>`
 
 	return `<!DOCTYPE html>
 <html dir="ltr" lang="en-NZ">
@@ -22,9 +66,6 @@ export default function addWrapper(body) {
 		<meta name="description" content="Our business diagnostic tool helps you to understand where you are and where you need to go.">
 		<meta name="author" content="Vito Lo Iacono">
 		<meta name="publisher" content="Vito Lo Iacono">
-		<meta name="color-scheme" content="light dark">
-		<meta name="theme-color" media="(prefers-color-scheme: light)" content="#fef0f3">
-		<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#710986">
 		${stylesheet}
 	</head>
 	<body>
@@ -34,34 +75,7 @@ export default function addWrapper(body) {
 		<main>
 			<header>
 				<h1>Diagnostic Results</h1>
-				<div class="no-print">
-					<p class="landscape-prompt">
-						<img
-							alt=""
-							height="24"
-							src="/images/landscape-mode.svg"
-							style="float: left; margin: 0.5rem 0.5rem 0.5rem 0;"
-						/>
-						For ease of use, please turn your phone a quarter turn to landscape orientation.
-					</p>
-					<p>Use <button onclick="window.print(); return false;">print</button> and &ldquo;Save as PDF&rdquo; to save as a PDF file.</p>
-					<p>Use the browser <button onclick="window.history.back(); return false;">back</button> button to return to your form.</p>
-					<div class="spreadsheet">
-						Download your
-						<form action="/api/business-diagnostics" method="POST">
-							${Object.entries(body)
-								.map(
-									([name, value]) =>
-										`<input type="hidden" name="${name}" value="${value}">`,
-								)
-								.join("\n						")}
-							<button type="submit">scores as a spreadsheet</button>
-						</form> in tab-separated-value (TSV) format.
-					</div>
-				</div>
-				<p class="print-only">
-					Printed from <strong>capo.nz</strong>.
-				</p>
+				${addChrome ? chrome : message}
 			</header>
 			${addScores(scores)}
 			${addRadarChart(points, scores)}
@@ -69,12 +83,11 @@ export default function addWrapper(body) {
 		</main>
 		<footer>
 			<p class="copyright">&copy; 2024 by <a href="https://capo.one/" rel="external">capo.</a></p>
-			<nav class="supplemental-nav">
+			${
+				addChrome
+					? `<nav class="supplemental-nav">
 				<h2 class="sr-only">Links to legal documents</h2>
 				<ul>
-					<li>
-						<a href="/feedback">Feedback</a>
-					</li>
 					<li>
 						<a href="/cookie-policy">Cookie policy</a>
 					</li>
@@ -85,7 +98,9 @@ export default function addWrapper(body) {
 						<a href="/terms-of-use">Terms of use</a>
 					</li>
 				</ul>
-			</nav>
+			</nav>`
+					: ""
+			}
 		</footer>
 	</body>
 </html>

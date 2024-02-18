@@ -54,8 +54,8 @@
 	:root {
 		--body-background-color: #005994;
 		--body-color: #fff;
-		--h2-background-color: #fff;
-		--h2-foreground-color: #005994;
+		--h2-background-color: #9ed9ff;
+		--h2-foreground-color: #00406b;
 		--heading-color: #9ed9ff;
 		--header-background-color: #9ed9ff;
 		--header-foreground-color: #00406b;
@@ -113,7 +113,9 @@ main {
 	grid-template-rows:
 		[main-top] var(--main-gutter-top, 2rem)
 		[content-top] auto
-		[content-bottom] var(--main-gutter-bottom, 2rem)
+		[content-bottom] var(--main-gutter-bottom, 4rem)
+		[scores-top] min-content
+		[scores-bottom] 1rem
 		[main-bottom];
 	grid-column: viewport-start / viewport-end;
 	grid-row: main-top / main-bottom;
@@ -176,4 +178,14 @@ article {
 		--page-width: 94vw;
 		--section-spacing: 1rem;
 	}
+}
+
+.performance {
+	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	grid-column: content-start / content-end;
+	grid-row: scores-top / scores-bottom;
+	justify-content: space-between;
 }

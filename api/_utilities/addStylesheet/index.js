@@ -93,13 +93,41 @@ export default function addStylesheet() {
 			}
 
 			:root {
-				--body-background-color: hsl(0deg, 0%, 100%);
+				--background-color-even-rows: #e6f5ff;
+				--body-background-color: #fff;
 				--body-color: #005994;
+				--email-input-background-color: #b3e0ff;
+				--email-input-border-color: #003a61;
+				--email-input-foreground-color: #003a61;
+				--h2-background-color: #005994;
+				--h2-foreground-color: #fff;
 				--heading-color: #005994;
+				--header-background-color: #005994;
+				--header-foreground-color: #fff;
+				--logo-foreground-color: #fff;
+				--na-button-background-color-checked: #4e585f;
+				--na-button-border-color-checked: #202427;
+				--na-button-foreground-color-checked: #fff;
+				--question-border-bottom-color: #b3e0ff;
+				--question-button-background-color-checked: #005994;
+				--question-button-border-color-checked: #003a61;
+				--question-button-foreground-color-checked: #fff;
+				--question-button-outline-color: #0096fa;
+				--submit-button-background-color: #0b6544;
+				--submit-button-border-color: #063725;
+				--submit-button-foreground-color: #fff;
+				--submit-button-outline-color: #15c182;
+				--submit-button-background-color-hover: #fff;
+				--submit-button-border-color-hover: #15c182;
+				--submit-button-foreground-color-hover: #063725;
+				--thead-background-color: #025994;
+				--thead-foreground-color: #fff;
 
+				/* Fonts */
 				--font-body: inter, roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans",
 					arial, sans-serif;
 
+				/* Spacing */
 				--space-3xs: clamp(0.25rem, 0.2356rem + 0.0769vi, 0.3125rem);
 				--space-2xs: clamp(0.5rem, 0.4712rem + 0.1538vi, 0.625rem);
 				--space-xs: clamp(0.75rem, 0.7067rem + 0.2308vi, 0.9375rem);
@@ -109,17 +137,48 @@ export default function addStylesheet() {
 				--space-xl: clamp(3rem, 2.8269rem + 0.9231vi, 3.75rem);
 				--space-2xl: clamp(4rem, 3.7692rem + 1.2308vi, 5rem);
 				--space-3xl: clamp(6rem, 5.6538rem + 1.8462vi, 7.5rem);
-
 				--gutter-width: 4vw;
 				--page-width: 92vw;
 				--section-spacing: 4rem;
 
+				/* Font sizes */
 				--step-0: clamp(1rem, 0.9279rem + 0.3846vi, 1.3125rem);
 				--step-1: clamp(1.2rem, 1.1135rem + 0.4615vi, 1.575rem);
 				--step-2: clamp(1.44rem, 1.3362rem + 0.5538vi, 1.89rem);
 				--step-3: clamp(1.728rem, 1.6034rem + 0.6646vi, 2.268rem);
 				--step-4: clamp(2.0736rem, 1.9241rem + 0.7975vi, 2.7216rem);
 				--step-5: clamp(2.4883rem, 2.3089rem + 0.957vi, 3.2659rem);
+			}
+
+			@media only screen and (prefers-color-scheme: dark) {
+				:root {
+					--background-color-even-rows: #004B7A;
+					--body-background-color: #005994;
+					--body-color: #fff;
+					--h2-background-color: #9ed9ff;
+					--h2-foreground-color: #00406b;
+					--heading-color: #9ed9ff;
+					--header-background-color: #9ed9ff;
+					--header-foreground-color: #00406b;
+					--logo-foreground-color: #00406b;
+					--na-button-background-color-checked: #4e585f;
+					--na-button-border-color-checked: #fff;
+					--na-button-foreground-color-checked: #fff;
+					--question-border-bottom-color: #fff6;
+					--question-button-background-color-checked: #005994;
+					--question-button-border-color-checked: #fff;
+					--question-button-foreground-color-checked: #fff;
+					--question-button-outline-color: #ff9;
+					--submit-button-background-color: #17d892;
+					--submit-button-border-color: #063725;
+					--submit-button-foreground-color: #063725;
+					--submit-button-outline-color: #fff;
+					--submit-button-background-color-hover: #fff;
+					--submit-button-border-color-hover: #063725;
+					--submit-button-foreground-color-hover: #063725;
+					--thead-background-color: #9ed9ff;
+					--thead-foreground-color: #00406b;
+				}
 			}
 
 			body {
@@ -170,16 +229,16 @@ export default function addStylesheet() {
 				grid-row: heading-top / heading-bottom;
 			}
 
-			.spreadsheet {
+			.has-form {
 				align-items: center;
 				display: flex;
 				flex-wrap: wrap;
 				gap: 0.5rem;
 				justify-content: flex-start;
-				padding: 1rem 0;
+				padding: 1rem 0 0;
 			}
 
-			.spreadsheet button {
+			.has-form button {
 				white-space: nowrap;
 			}
 
@@ -193,8 +252,8 @@ export default function addStylesheet() {
 			}
 
 			thead {
-				background-color: #025994;
-				color: #fff;
+				background-color: var(--thead-background-color);
+				color: var(--thead-foreground-color);
 			}
 
 			thead th {
@@ -202,7 +261,7 @@ export default function addStylesheet() {
 			}
 
 			tbody tr:nth-child(even) {
-				background-color: #E6F5FF;
+				background-color: var(--background-color-even-rows);
 			}
 
 			td,
@@ -446,6 +505,14 @@ export default function addStylesheet() {
 			.logo a:focus,
 			.logo a:hover {
 				outline: 2px solid var(--body-background-color);
+			}
+
+			input[type=email] {
+				background-color: var(--email-input-background-color);
+				border: 1px solid var(--email-input-border-color);
+				border-radius: 3px;
+				color: var(--email-input-foreground-color);
+				height: 2.4rem;
 			}
 
 			@media only print {

@@ -11,6 +11,9 @@ footer {
 		[right-column-start] auto
 		[right-column-end] var(--gutter-width, 4vw)
 		[footer-end];
+	grid-template-rows:
+		[footer-top] min-content
+		[footer-bottom];
 	font-family: var(--font-body);
 	max-height: fit-content;
 	padding: var(--space-xs) 0;
@@ -23,6 +26,7 @@ footer > * {
 
 footer > .copyright {
 	grid-column: left-column-start / left-column-end;
+	grid-row: footer-top / footer-bottom;
 	margin: 0;
 	padding: 0;
 	white-space: nowrap;
@@ -30,6 +34,7 @@ footer > .copyright {
 
 nav {
 	grid-column: right-column-start / right-column-end;
+	grid-row: footer-top / footer-bottom;
 }
 
 nav > ul {
