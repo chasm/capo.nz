@@ -9,6 +9,7 @@ export default function addWrapper(body, message = "", addChrome = true) {
 	const scores = getScores(body)
 	const points = getPoints(scores)
 	const stylesheet = addStylesheet()
+	const { email, name } = body
 
 	const chrome = `<div class="no-print">
 	<p class="landscape-prompt">
@@ -22,7 +23,7 @@ export default function addWrapper(body, message = "", addChrome = true) {
 	</p>
 	<p>Use <button onclick="window.print(); return false;">print</button> and &ldquo;Save as PDF&rdquo; to save as a PDF file.</p>
 	<p>Use the browser <button onclick="window.history.back(); return false;">back</button> button to return to your form.</p>
-	<div class="has-form">
+	<div class="has-inline-form">
 		Download your
 		<form action="/api/business-diagnostics" method="POST">
 			${Object.entries(body)
@@ -35,17 +36,22 @@ export default function addWrapper(body, message = "", addChrome = true) {
 		</form> in tab-separated-value (TSV) format.
 	</div>
 	<div class="has-form">
-		To get a copy of your results, provide your email address:
+		<p>To get a copy of your results, use this form:</p>
 		<form action="/api/response" method="POST">
-			<label>
-				<input type="email" name="email" required />
-			</label>
-			${Object.entries(body)
-				.map(
-					([name, value]) =>
-						`<input type="hidden" name="${name}" value="${value}">`,
-				)
-				.join("\n						")}
+			<div>
+				<label for="name">Business name*</label>
+				<input id="name" name="name" required size="32" type="text">
+			</div>
+			<div>
+				<label for="email">Email address*</label>
+					<input id="email" name="email" required size="32" type="email">
+				${Object.entries(body)
+					.map(
+						([name, value]) =>
+							`<input name="${name}" value="${value}" type="hidden">`,
+					)
+					.join("\n						")}
+			</div>
 			<button type="submit">Send</button>
 		</form>
 	</div>
@@ -74,7 +80,7 @@ export default function addWrapper(body, message = "", addChrome = true) {
 		</header>
 		<main>
 			<header>
-				<h1>Diagnostic Results</h1>
+				<h1>Diagnostic Results${name ? ` for ${name}` : ""}</h1>
 				${addChrome ? chrome : message}
 			</header>
 			${addScores(scores)}

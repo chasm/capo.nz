@@ -96,9 +96,10 @@ export default function addStylesheet() {
 				--background-color-even-rows: #e6f5ff;
 				--body-background-color: #fff;
 				--body-color: #005994;
-				--email-input-background-color: #b3e0ff;
-				--email-input-border-color: #003a61;
-				--email-input-foreground-color: #003a61;
+				--input-background-color: #d6eeff;
+				--input-background-color-focus: #fff;
+				--input-border-color: #003a61;
+				--input-foreground-color: #003a61;
 				--h2-background-color: #005994;
 				--h2-foreground-color: #fff;
 				--heading-color: #005994;
@@ -229,7 +230,7 @@ export default function addStylesheet() {
 				grid-row: heading-top / heading-bottom;
 			}
 
-			.has-form {
+			.has-inline-form {
 				align-items: center;
 				display: flex;
 				flex-wrap: wrap;
@@ -238,7 +239,24 @@ export default function addStylesheet() {
 				padding: 1rem 0 0;
 			}
 
-			.has-form button {
+			.has-form form {
+				align-items: flex-start;
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+				justify-content: space-between;
+				padding-block: 1rem;
+			}
+
+			.has-form div {
+				display: flex;
+				flex-direction: column;
+				gap: 0.5rem;
+				justify-content: space-between;
+			}
+
+			.has-form button,
+			.has-inline-form button {
 				white-space: nowrap;
 			}
 
@@ -507,12 +525,18 @@ export default function addStylesheet() {
 				outline: 2px solid var(--body-background-color);
 			}
 
-			input[type=email] {
-				background-color: var(--email-input-background-color);
-				border: 1px solid var(--email-input-border-color);
+			input[type=email],
+			input[type=text] {
+				background-color: var(--input-background-color);
+				border: 1px solid var(--input-border-color);
 				border-radius: 3px;
-				color: var(--email-input-foreground-color);
-				height: 2.4rem;
+				color: var(--input-foreground-color);
+				padding: 0.5rem;
+			}
+
+			input[type=email]:focus,
+			input[type=text]:focus {
+				background-color: var(--input-background-color-focus);
 			}
 
 			@media only print {

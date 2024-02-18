@@ -16,7 +16,7 @@ const VITO = {
 }
 
 export default async function sendEmail(body) {
-	const { email } = body
+	const { email, name } = body
 
 	if (!email) {
 		return { message: "No email." }
