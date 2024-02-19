@@ -377,7 +377,7 @@ export default function getChart(scores = []) {
 			<g
 				alignment-baseline="middle"
 				stroke="#575757"
-				font-family="Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif"
+				font-family="inter,roboto,'Helvetica Neue','Arial Nova','Nimbus Sans',arial,sans-serif"
 				font-size="22px"
 				font-weight="normal"
 				text-anchor="middle"
