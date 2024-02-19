@@ -1,15 +1,13 @@
-import addRadarChart from "../addRadarChart/index.js"
+import getChart from "../getChart/index.js"
 import addResponses from "../addResponses/index.js"
 import addScores from "../addScores/index.js"
 import addStylesheet from "../addStylesheet/index.js"
-import getPoints from "../getPoints/index.js"
 import getScores from "../getScores/index.js"
 
 export default function addWrapper(body, message = "", addChrome = true) {
 	const scores = getScores(body)
-	const points = getPoints(scores)
 	const stylesheet = addStylesheet()
-	const { email, name } = body
+	const { name } = body
 
 	const chrome = `<div class="no-print">
 	<p class="landscape-prompt">
@@ -84,7 +82,18 @@ export default function addWrapper(body, message = "", addChrome = true) {
 				${addChrome ? chrome : message}
 			</header>
 			${addScores(scores)}
-			${addRadarChart(points, scores)}
+			<section class="chart">
+				<h2>Radar chart</h2>
+				${getChart(scores.map((score) => score.score))}
+				${
+					addChrome
+						? ""
+						: `
+					<p>If this chart does not appear, you can
+					<a href="https://capo.nz/api/chart?scores=${scores.map((score) => score.score).join(",")}"
+					>view it online.</a></p>`
+				}
+			</section>
 			${addResponses(scores)}
 		</main>
 		<footer>

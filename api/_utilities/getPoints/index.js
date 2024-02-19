@@ -12,7 +12,9 @@ const radians = [
 ]
 
 export default function getPoints(scores) {
-	const data = scores.map((score) => parseInt(score.score, 10) || 0)
+	const data = scores.map((score) => {
+		return typeof score === "object" ? parseInt(score.score, 10) || 0 : score
+	})
 
 	return data.map((value, index) => {
 		const [rx = 0, ry = 0] = radians[index] || []

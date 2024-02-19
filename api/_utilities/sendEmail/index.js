@@ -4,7 +4,7 @@ const MAILERSEND_API_KEY = process.env.MAILERSEND_API_KEY
 
 const CHAS = {
 	name: "Charles F. Munat",
-	email: "charles.munat@gmail.com",
+	email: "capo@munat.com",
 }
 const CAPO = {
 	name: "Capo",
@@ -42,8 +42,11 @@ export default async function sendEmail(body) {
 			method: "POST",
 		})
 
+		// console.log("status", resp.status)
+
 		return resp.status
 	} catch (error) {
+		// console.log("error", error)
 		return error
 	}
 }
