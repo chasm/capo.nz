@@ -42,11 +42,8 @@ export default async function sendEmail(body) {
 			method: "POST",
 		})
 
-		// console.log("status", resp.status)
-
 		return resp.status
 	} catch (error) {
-		// console.log("error", error)
 		return error
 	}
 }
