@@ -17,15 +17,28 @@ import Honeypot from "~components/Honeypot/index.astro"
 		/>
 		For ease of use, please turn your phone a quarter turn to landscape orientation.
 	</p>
+	<p>
+		Welcome to the Capo Growth Navigator, your comprehensive solution for
+		evaluating and enhancing various aspects of your business. This tool covers
+		critical business areas. Each section is designed to help you reflect on key
+		performance indicators, identify gaps, and implement effective strategies
+		for improvement.
+	</p>
+	<p>
+		By regularly assessing these areas, you can ensure sustained growth and
+		success for your business. We use this tool to gain actionable insights and
+		help you drive your business forward.
+	</p>
 	<form
 		action="/api/results"
 		id="diagnostics-tool"
 		method="POST"
 	>
 		{
-			DIAGNOSTICS_TOOL.map(({ category, questions }, index) => (
+			DIAGNOSTICS_TOOL.map(({ category, description, questions }, index) => (
 				<Category
 					{category}
+					{description}
 					{questions}
 					{index}
 				/>

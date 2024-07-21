@@ -5,16 +5,25 @@ import Question from "./Question/index.astro"
 
 export type Props = {
 	category: string
+	description?: string
 	index: number
 	questions: Array<string>
 }
 
-const { category, index, questions = [] } = Astro.props
+const { category, description, index, questions = [] } = Astro.props
 ---
 
 <section>
 	<h2>{category}</h2>
+	<p>{description}</p>
 	<ul class="questions">
+		<li class="labels">
+			<span class="measure">Measure</span>
+			<span class="label na">N/A</span>
+			<span class="label">Yes</span>
+			<span class="label">Some</span>
+			<span class="label">No</span>
+		</li>
 		{
 			questions.map((question, no) => (
 				<Question

@@ -1,9 +1,25 @@
+li.labels {
+	display: grid;
+	gap: 0.2rem;
+	grid-template-columns: auto 4rem 4rem 4rem 4rem;
+	margin-block: 1rem 0;
+}
+
+li.labels span.label {
+	color: transparent;
+	text-align: center;
+}
+
+li.labels span.measure {
+	font-weight: bold;
+}
+
 li.question {
 	border-bottom: 1px solid var(--question-border-bottom-color);
 	display: grid;
 	gap: 0.2rem;
 	grid-template-areas: "question na yes somewhat no";
-	grid-template-columns: auto min-content min-content min-content min-content;
+	grid-template-columns: auto 4rem 4rem 4rem 4rem;
 	margin-block: 0.5rem;
 	padding-block: 0.5rem;
 }
@@ -12,12 +28,28 @@ li.question:last-child {
 	border-bottom: none;
 }
 
-li.question span {
-	display: inline-block;
-	grid-area: question;
-	padding-right: 2rem;
+li.question input[type="radio"] {
+	height: 1.25rem;
+	width: 1.25rem;
 }
 
+li.question label {
+	color: transparent;
+	display: inline-block;
+	text-align: center;
+}
+
+li.question:focus-within label,
+li.question label:has(input:hover),
+li.question label:has(input:focus),
+li.question label:has(input:checked) {
+	color: hsl(0, 0%, 60%);
+}
+
+li.question label div {
+	margin-top: 0.2rem;
+}
+/*
 li.question label {
 	align-items: center;
 	background-color: #e6e6e6;
@@ -33,6 +65,10 @@ li.question label {
 	margin: 0.25rem;
 	padding: 0.25rem 0.5rem;
 	position: relative;
+} */
+
+li.question > span {
+	grid-area: question;
 }
 
 li.question label:nth-child(2) {
@@ -51,7 +87,7 @@ li.question label:last-child {
 	grid-area: no;
 }
 
-li.question label:has(:checked) {
+/* li.question label:has(:checked) {
 	background-color: var(--question-button-background-color-checked);
 	border-color: var(--question-button-border-color-checked);
 	color: var(--question-button-foreground-color-checked);
@@ -74,18 +110,29 @@ li.question input[type="radio"] {
 	max-height: 1px;
 	max-width: 1px;
 	position: absolute;
-}
+} */
 
 .landscape-prompt {
 	display: none;
 }
 
 @media only screen and (width <= 720px) {
+	li.labels {
+		display: grid;
+		gap: 0.2rem;
+		grid-template-columns: auto 2.5rem 2.5rem 2.5rem 2.5rem;
+		margin-block: 1rem 0;
+	}
+
+	li.labels span.label {
+		color: hsl(0, 0%, 60%);
+	}
+
 	li.question {
 		grid-template-areas:
 			"question question question question question"
 			"na yes somewhat no blank";
-		grid-template-columns: min-content min-content min-content min-content auto;
+		grid-template-columns: 3rem 3rem 3rem 3rem auto;
 		row-gap: 0.5rem;
 	}
 

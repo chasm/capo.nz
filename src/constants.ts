@@ -3,6 +3,8 @@ import collapseWhitespace from "~utilities/collapseWhitespace"
 export const DIAGNOSTICS_TOOL = [
 	{
 		category: "Service Excellence",
+		description:
+			"Evaluate how well your company meets customer expectations. Ensure regular client surveys, analyse mistakes for continuous improvement, and adapt strategies to meet customer needs. Prioritise customer satisfaction over immediate sales to build long-term loyalty.",
 		questions: [
 			"Our company tests and measures everything to ensure customer satisfaction.",
 			"We survey our clients regularly to determine how we can better serve them.",
@@ -14,6 +16,8 @@ export const DIAGNOSTICS_TOOL = [
 	},
 	{
 		category: "Sales Drive",
+		description:
+			"Focus on managing and forecasting sales processes. Regularly train your sales force, foster teamwork, and implement rewards programs. Track sales volumes and market share satisfaction to drive continuous improvement.",
 		questions: [
 			"Sales processes are managed weekly and measures are taken to ensure sales forecast are met.",
 			"My sales force is successful and undergoes regular training on both product and selling skills.",
@@ -25,6 +29,8 @@ export const DIAGNOSTICS_TOOL = [
 	},
 	{
 		category: "Targeted Marketing",
+		description:
+			"Focus on managing and forecasting sales processes. Regularly train your sales force, foster teamwork, and implement rewards programs. Track sales volumes and market share satisfaction to drive continuous improvement.",
 		questions: [
 			"The company has found a niche for its product and no longer competes on price.",
 			"We only advertise when we can test and measure the results.",
@@ -36,6 +42,8 @@ export const DIAGNOSTICS_TOOL = [
 	},
 	{
 		category: "High-Performing Team",
+		description:
+			"Ensure each team member operates at full potential with synergy and accountability. Encourage open communication, listen to recommendations, and foster a supportive environment where everyone enjoys their work.",
 		questions: [
 			"Every member of the team is operating at their full potential.",
 			"There is synergy among all the members of our team.",
@@ -47,6 +55,8 @@ export const DIAGNOSTICS_TOOL = [
 	},
 	{
 		category: "Strong Strategy Drive",
+		description:
+			"Develop and update a formal business plan with clear strategic objectives. Conduct regular strategy sessions, understand competitor practices, and align with supportive allies to steer the company in the intended direction.",
 		questions: [
 			"The company has a formal business plan that sets out its strategic objectives.",
 			"The companyʼs business plan is being used, tested, measured, and updated quarterly.",
@@ -58,6 +68,8 @@ export const DIAGNOSTICS_TOOL = [
 	},
 	{
 		category: "Visible Cashflow",
+		description:
+			"Maintain a clear annual budget with well-defined processes. Ensure timely financial statements and invoice payments. Negotiate favorable terms with suppliers and aim for ambitious budgeting to sustain growth.",
 		questions: [
 			"The company has an annual budget.",
 			"Budgeting processes are clearly defined and adhered to.",
@@ -69,6 +81,8 @@ export const DIAGNOSTICS_TOOL = [
 	},
 	{
 		category: "Productivity Prioritisation",
+		description:
+			"Manage operations with effective systems and hold staff accountable for their tasks. Measure both quality and profit regularly, ensure meetings are productive, and facilitate open communication about obstacles.",
 		questions: [
 			"Operations are fully managed by systems.",
 			"Staff are accountable to complete their tasks; their deliverables are monitored and supported.",
@@ -80,6 +94,8 @@ export const DIAGNOSTICS_TOOL = [
 	},
 	{
 		category: "Profitability Monitoring",
+		description:
+			"Track profit margins and forecast increases. Reduce debt service and define financial responsibilities clearly. Maintain optimal staff and facility capacity, and ensure profitability exceeds industry standards.",
 		questions: [
 			"Profit margins have increased over the last two years.",
 			"Profits forecast increase 15% per annum.",
@@ -91,6 +107,8 @@ export const DIAGNOSTICS_TOOL = [
 	},
 	{
 		category: "Work/Life Balance - Wellbeing",
+		description:
+			"Promote employee wellbeing with reasonable work hours, financial independence plans, and daily well-being habits. Ensure employees feel energised and fulfilled, with well-planned days and satisfaction in their earnings.",
 		questions: [
 			"Everyone feels energised at the beginning of the week and fulfilled at the end of it.",
 			"Our employees work an average of less than 50 hours per week.",
@@ -102,6 +120,8 @@ export const DIAGNOSTICS_TOOL = [
 	},
 	{
 		category: "Effective Leadership",
+		description:
+			"Clarify the company's vision and lead by example. Strive for excellence while accepting imperfections, build a culture of accountability, learn from mistakes, and support each other’s strengths and weaknesses.",
 		questions: [
 			"Our vision is clear across the business.",
 			"We all lead by example.",

@@ -12,37 +12,33 @@ const { index, no, question } = Astro.props
 
 <li class="question">
 	<span>{question}</span>
-	<label
-		>N/A
+	<label>
 		<input
 			checked
 			name={`c${index}q${no}`}
 			type="radio"
 			value=""
-		/>
+		/><div class="text na">N/A</div>
 	</label>
-	<label
-		>YES
+	<label>
 		<input
 			name={`c${index}q${no}`}
 			type="radio"
 			value="2"
-		/>
+		/><div class="text">Yes</div>
 	</label>
-	<label
-		>SOMEWHAT
+	<label>
 		<input
 			name={`c${index}q${no}`}
 			type="radio"
 			value="1"
-		/>
+		/><div class="text">Some</div>
 	</label>
-	<label
-		>NO
+	<label>
 		<input
 			name={`c${index}q${no}`}
 			type="radio"
 			value="0"
-		/>
+		/><div class="text">No</div>
 	</label>
 </li>
